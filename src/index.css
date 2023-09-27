@@ -10,7 +10,8 @@
 
 body {
   margin: 0;
-  background-image: linear-gradient(to bottom right, blue, gray);
+  /* background-image: linear-gradient(to bottom right, blue, gray); */
+  background-image: url('https://res.cloudinary.com/cloud-juan/image/upload/v1695831398/portfolio/ybcrnvhmug1rtkgywtii.jpg');
 }
 
 .main-container {
@@ -19,4 +20,24 @@ body {
 
 main {
   height: 100%;
+}
+
+#title-portafolio:hover{
+  text-decoration: underline;
+}
+
+.rejilla {
+  height: 100vh;
+}
+
+.carousel-control-prev{
+  left: -30px;
+}
+
+.carousel-control-next{
+  right: -30px;
+}
+
+#front-icon{
+  height: 30px;
 }
