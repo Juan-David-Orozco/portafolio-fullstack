@@ -45,7 +45,7 @@ export function HomePage() {
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>React</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695868306/portfolio/tx2qsiut4v2nl9wgra37.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695931744/portfolio/dgtkrant9zr8zg27zwrr.png" className="icon" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>Vue</span>
