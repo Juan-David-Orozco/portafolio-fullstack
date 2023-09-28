@@ -10,13 +10,83 @@
 
 body {
   margin: 0;
-  background-image: linear-gradient(to bottom right, blue, gray);
+  /* background-image: linear-gradient(to bottom right, blue, gray); */
+  background-image: url('https://res.cloudinary.com/cloud-juan/image/upload/v1695831398/portfolio/ybcrnvhmug1rtkgywtii.jpg');
 }
 
-.main-container {
+/* .main-container {
   min-height: 100vh;
+} */
+
+/* main {
+  height: 100%;
+} */
+
+#title-portafolio:hover{
+  text-decoration: underline;
 }
 
-main {
-  height: 100%;
+.rejilla{
+  height: 100vh;
+}
+
+@media (min-width: 576px) {
+  .carousel-control-prev{
+    left: -5rem;
+  }
+  
+  .carousel-control-next{
+    right: -5rem;
+  }
+}
+
+.carousel-indicators{
+  bottom: -40px;
+}
+
+/* @media (max-width: 575.98px) {
+  .carousel-control-prev{
+    left: -3rem;
+  }
+  
+  .carousel-control-next{
+    right: -3rem;
+  }
+} */
+
+/* @media screen and (max-width: 767.98px) {
+  .carousel-control-prev{
+    left: -4rem;
+  }
+  
+  .carousel-control-next{
+    right: -4rem;
+  }
+} */
+
+#front-icon{
+  height: 40px;
+}
+
+#back-icon{
+  height: 30px;
+}
+
+/* img.header-icons{
+  height: 40px;
+} */
+
+#front-image{
+  width: 75%;
+  margin: auto;
+}
+
+#back-image{
+  width: 75%;
+  margin: auto;
+}
+
+.icon{
+  height: 25px;
+  margin: auto 0;
 }
