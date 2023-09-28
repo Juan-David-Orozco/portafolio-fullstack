@@ -14,13 +14,13 @@ body {
   background-image: url('https://res.cloudinary.com/cloud-juan/image/upload/v1695831398/portfolio/ybcrnvhmug1rtkgywtii.jpg');
 }
 
-/* .main-container {
+.main-container {
   min-height: 100vh;
-} */
+}
 
-/* main {
+main {
   height: 100%;
-} */
+}
 
 #title-portafolio:hover{
   text-decoration: underline;

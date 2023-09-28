@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export function HomePage() {
   return (
     <>
@@ -50,7 +52,7 @@ export function HomePage() {
                           <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695868426/portfolio/iob1ckkqqmfvnhnbcp1e.png" className="icon" />
                         </li>
                       </ul>
-                      <a href="#" className="btn btn-dark btn-lg text-white mt-3">Ver más</a>
+                      <Link to="/portafolio-fullstack/frontend" className="btn btn-dark btn-lg text-white mt-3">Ver más</Link>
                     </div>
                   </div>
                 </div>
@@ -89,7 +91,7 @@ export function HomePage() {
                           <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695879056/portfolio/oz3dy0htlqwrdzu8tlx6.png" className="icon" />
                         </li>
                       </ul>
-                      <a href="#" className="btn btn-danger btn-lg text-white mt-3">Ver más</a>
+                      <Link to="/portafolio-fullstack/backend" className="btn btn-danger btn-lg text-white mt-3">Ver más</Link>
                     </div>
                   </div>
                 </div>
