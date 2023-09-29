@@ -21,38 +21,38 @@ export function HomePage() {
                   <div className="card">
                     <div className="card-header d-flex justify-content-between bg-dark text-white px-4">
                       <h3 className="mb-0 my-auto">FrontEnd</h3>
-                      <img id="front-icon" className="d-block my-auto header-icons" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695846285/portfolio/nojjfgo89hfsxfykhpia.png" alt="Second slide" />
+                      <img id="front-icon" className="d-block my-auto header-icons" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695846285/portfolio/nojjfgo89hfsxfykhpia.png" alt="Frontend Icon" />
                     </div>
-                    <img id="front-image" className="card-img-top px-5 py-3" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695845940/portfolio/f8raheskzsowmgfkfmof.png" alt="Card image cap" />
-                    <div className="card-body text-secondary bg-light">
-                      <p className="card-text text-center mb-4">Proyectos y ejemplos FrontEnd implementando tecnologias</p>
+                    <div className="card-body text-secondary bg-light text-center">
+                      <img className="px-5 py-3 main-images" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695845940/portfolio/f8raheskzsowmgfkfmof.png" alt="Frontend image cap" />
+                      <p className="card-text pt-2 mb-4">Proyectos y ejemplos FrontEnd implementando tecnologías</p>
                       <ul className="list-group list-group-flush">
                         <li className="list-group-item d-flex justify-content-between">
                           <span>HTML 5</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695851642/portfolio/rdayw2k5rqyq6hxuaiw0.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695851642/portfolio/rdayw2k5rqyq6hxuaiw0.png" className="icon-front" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>CSS 3</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695851750/portfolio/aeoet3h4gfphwcwd8p4p.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695851750/portfolio/aeoet3h4gfphwcwd8p4p.png" className="icon-front" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>JavaScript</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695867674/portfolio/zwsy1aodaj1vhwj0gy27.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695867674/portfolio/zwsy1aodaj1vhwj0gy27.png" className="icon-front" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>Bootstrap</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695867861/portfolio/l9xfdvvqj7eufvr6cxsg.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695867861/portfolio/l9xfdvvqj7eufvr6cxsg.png" className="icon-front" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>React</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695931744/portfolio/dgtkrant9zr8zg27zwrr.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695931744/portfolio/dgtkrant9zr8zg27zwrr.png" className="icon-front" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>Vue</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695868426/portfolio/iob1ckkqqmfvnhnbcp1e.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695868426/portfolio/iob1ckkqqmfvnhnbcp1e.png" className="icon-front" />
                         </li>
                       </ul>
-                      <Link to="/portafolio-fullstack/frontend" className="btn btn-dark btn-lg text-white mt-3">Ver más</Link>
+                      <Link to="/portafolio-fullstack/frontend" className="btn btn-dark btn-block text-white mt-4 mb-1">Ver más</Link>
                     </div>
                   </div>
                 </div>
@@ -61,37 +61,37 @@ export function HomePage() {
                   <div className="card">
                     <div className="card-header d-flex justify-content-between bg-danger text-white px-4">
                       <h3 className="mb-0 my-auto">BackEnd</h3>
-                      <img id="back-icon" className="d-block my-auto header-icons" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695879298/portfolio/h1cgk1dh7pfxdctx9xtt.png" alt="Second slide" />
+                      <img id="back-icon" className="d-block my-auto header-icons" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695879298/portfolio/h1cgk1dh7pfxdctx9xtt.png" alt="Backend Icon" />
                     </div>
-                    <img id="back-image" className="card-img-top px-5 py-3" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695876110/portfolio/uxbhxnvn6puwz5x9zcsp.png" alt="Card image cap" />
-                    <div className="card-body text-secondary bg-light">
-                      <p className="card-text text-center mb-3">API's y aplicaciones MVC desde el servidor</p>
+                    <div className="card-body text-secondary bg-light text-center">
+                      <img className="px-5 py-3 main-images" src="https://res.cloudinary.com/cloud-juan/image/upload/v1695876110/portfolio/uxbhxnvn6puwz5x9zcsp.png" alt="Backend image cap" />
+                      <p className="card-text pt-2 mb-4">API's y aplicaciones MVC desde el servidor</p>
                       <ul className="list-group list-group-flush mb-3">
                         <li className="list-group-item d-flex justify-content-between">
                           <span>Node</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695877641/portfolio/opljckvihfi9gwve3amv.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695996486/portfolio/x3oe6vaie1vhpvjq8jjm.png" className="icon-back" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>Nest</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695877900/portfolio/htyaxk6nipkkfoa4w3ap.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695877900/portfolio/htyaxk6nipkkfoa4w3ap.png" className="icon-back" />
                         </li>
                       </ul>
                       <p className="card-text text-center mb-4">Implementacion de bases de datos SQL y NoSQL</p>
                       <ul className="list-group list-group-flush">
                         <li className="list-group-item d-flex justify-content-between">
                           <span>MySQL</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695878554/portfolio/obcd8sgbzfvvg18emtdq.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695994092/portfolio/xbdpaexsslsvsbp6ihn2.png" className="icon-back" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
-                          <span>SQL Server</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695878554/portfolio/jksvk0mnpzp0txfeouc7.png" className="icon" />
+                          <span>PostgreSQL</span>
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695995315/portfolio/xebt39jacvs3nhddkqgi.png" className="icon-back" />
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                           <span>MongoDB</span>
-                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695879056/portfolio/oz3dy0htlqwrdzu8tlx6.png" className="icon" />
+                          <img src="https://res.cloudinary.com/cloud-juan/image/upload/v1695993596/portfolio/xk8xhroxeqn0ng8obvym.png" className="icon-back" />
                         </li>
                       </ul>
-                      <Link to="/portafolio-fullstack/backend" className="btn btn-danger btn-lg text-white mt-3">Ver más</Link>
+                      <Link to="/portafolio-fullstack/backend" className="btn btn-danger btn-block text-white mt-4 mb-1">Ver más</Link>
                     </div>
                   </div>
                 </div>
