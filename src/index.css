@@ -22,6 +22,10 @@ main {
   height: 100%;
 }
 
+span {
+  margin: auto 5px;
+}
+
 #title-portafolio:hover{
   text-decoration: underline;
 }
