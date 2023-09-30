@@ -80,3 +80,22 @@ span {
     width: 90%;
   }
 }
+
+.frame{
+  height: 30px;
+  margin: auto 0;
+}
+
+.icon-button{
+  height: 30px;
+  margin: auto 0;
+}
+
+#col-search{
+  margin-right: 2px;
+  padding: 1px;
+}
+
+/* #input-search{
+  padding: 7px 0;
+} */
