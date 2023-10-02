@@ -92,8 +92,8 @@ span {
 }
 
 #col-search{
-  margin-right: 2px;
-  padding: 1px;
+  /* margin-right: 2px; */
+  padding: 2px;
 }
 
 /* #input-search{

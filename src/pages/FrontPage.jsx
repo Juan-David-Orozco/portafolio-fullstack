@@ -2,33 +2,15 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { requestGetProjects } from "../services/requests";
 import { db } from '../services/firebase'
-import { collection, onSnapshot, } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTableCells, faList } from '@fortawesome/free-solid-svg-icons'
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTableCells, faList, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export function FrontPage() {
 
   const [search, setSearch] = useState("")
 
   const [projects, setProjects] = useState([])
-
-  const getProjects = async () => {
-    const result = await requestGetProjects()
-    console.log(result)
-    const docs = []
-    result.forEach((doc) => {
-      docs.push({id: doc.id, ...doc.data()})
-    });
-    setProjects(docs)
-    console.log(docs)
-  }
-
-  // const getAllProjects = () => {
-  //   const response = onGetProjects()
-  //   console.log(response)
-  // }
 
   const onGetProjects = () => {
     onSnapshot(collection(db, "frontend"), (querySnapshot) => {
@@ -41,20 +23,83 @@ export function FrontPage() {
     });
   }
 
-  const handleChange = (e) => {
-    setSearch(e.target.value)
-    console.log(e.target.value)
+  const filterProjects = async (busqueda) => {
+    const q = query(collection(db, "frontend"), where("title", "==", busqueda))
+    const querySnapshot = await getDocs(q)
+    const docsFound = []
+    querySnapshot.forEach(doc => {
+      docsFound.push({id: doc.id, ...doc.data()})
+      //console.log(doc.data())
+    })
+    return docsFound
+  }
+
+  const onfilterProjects = () => {
     console.log(search)
   }
 
-  const handleClick = (e) => {
+  async function onChange (e) {
+    const valueSearch = e.target.value
+    //setSearch(valueSearch)
+    console.log(e.target.value)
+    //console.log(search)
+
+    const inputValue = document.getElementById("input-search").value
+    console.log(inputValue)
+    setSearch(inputValue)
+
+    if (search === "") console.log("search")
+
+    // if(search === "") onGetProjects()
+    // else {
+    //   const foundProjects = await filterProjects(search)
+    //   console.log(foundProjects)
+    //   setProjects(foundProjects)
+    //   // setSearch("")
+    // }
+  }
+
+  const handleChange = async (e) => {
+
+    // setSearch(e.target.value)
+    console.log(e.target.name, e.target.value)
+    const valueSearch = e.target.value
+    setSearch(valueSearch)
+    console.log(search)
+
+    // if(e.target.value === "") onGetProjects()
+    // else {
+    //   const foundProjects = await filterProjects(e.target.value)
+    //   console.log(foundProjects)
+    //   setProjects(foundProjects)
+    //   // setSearch("")
+    // }
+
+  }
+
+  const handleClick = async (e) => {
     e.preventDefault()
     console.log(search)
+
+    //setSearch("")
+
+    // if(search === "") onGetProjects()
+    // else {
+    //   const foundProjects = await filterProjects()
+    //   console.log(foundProjects)
+    //   setProjects(foundProjects)
+    //   setSearch("")
+    // }
+    // if(foundProjects.length === 0) onGetProjects()
+
+    //filterProjects()
+
+    // let projectsFound = projects.filter((project) => project.title == search)
+    // console.log(projectsFound)
+    // setProjects(projectsFound)
   }
 
   useEffect(() => {
-    //getProjects();
-    //getAllProjects()
     onGetProjects()
   }, [])
 
@@ -86,31 +131,38 @@ export function FrontPage() {
         </div> */}
         <div className="row mx-auto align-items-center no-gutters">
 
-          <div className="col-12 mx-auto bg-light pt-4 pb-3 px-3 px-md-2">
-            <div className="row  align-items-center no-gutters px-0 px-md-4 py-2 justify-content-between flex-nowrap">
-              <div className="col-8 col-sm-8 col-md-9 border border-dark rounded" id="col-search">
+          <div className="col-12 mx-auto bg-light pt-4 pb-3 px-4 px-md-4">
+            <div className="row align-items-center no-gutters px-0 px-md-4 py-2 justify-content-between ">
+              <div className="col-9 col-sm-8 col-md-10 border border-dark rounded" id="col-search">
                 <form className="form">
                   <div className="form-row">
                     <div className="col-12 mx-auto"> 
-                      <input
-                        type="text" placeholder="Buscar proyecto"
-                        className='form-control' name="name"
-                        value={search} onChange={handleChange}
-                        id="input-search"
-                      />
+                      <div className="input-group">
+                        <input
+                          type="text" placeholder="Buscar proyecto"
+                          className='form-control' name="search"
+                          value={search} onChange={onChange}
+                          id="input-search"
+                        />
+                        <div className="input-group-prepend busqueda">
+                          <button className="btn btn-secondary" type="button" onClick={handleClick}>
+                            <FontAwesomeIcon icon={faXmark } />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </form>
               </div>
-              <div className="col ">
-                {/* <div className="row justify-content-center text-center no-gutters">
+              {/* <div className="col-1">
+                <div className="row justify-content-center text-center no-gutters">
                   <div className="col border border-dark rounded py-1 m-1">
                     <FontAwesomeIcon icon={faTableCells} />
                   </div>
                   <div className="col border border-dark rounded py-1 m-1 ">
                     <FontAwesomeIcon icon={faList} />
                   </div>
-                </div> */}
+                </div>
                 <ul className="nav justify-content-center flex-nowrap">
                   <li className="nav-item px-1 py-1">
                     <Link className="nav-link active border border-dark rounded text-dark" href="#">
@@ -123,17 +175,31 @@ export function FrontPage() {
                     </Link>
                   </li>
                 </ul>
-              </div>
-              <div className="col-1 col-md-2 ml-1 py-1">
-                <Link className="btn btn-dark border border-dark rounded text-white p-2 mx-auto" href="#">
+              </div> */}
+              <div className="col-3 col-md-2 py-1 px-auto mx-auto">
+
+                <div className="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                  <div className="btn-group" role="group" aria-label="First group">
+                    <button type="button" className="btn btn-dark">
+                      <FontAwesomeIcon icon={faTableCells} />
+                    </button>
+                    <button type="button" className="btn btn-primary">
+                      <span className="d-none d-lg-inline text-sm" >Agregar</span>
+                      <FontAwesomeIcon icon={faPlus} className="my-auto"/>
+                    </button>
+                  </div>
+                </div>
+
+                {/* <Link className="btn btn-dark border border-dark rounded text-white p-2 mx-auto" href="#">
                   <span className="d-none d-lg-inline text-sm" >Agregar</span>
                   <FontAwesomeIcon icon={faPlus} className="my-auto"/>
-                </Link>
+                </Link> */}
+
               </div>
             </div>
           </div>
 
-          <div className="col-12 mx-auto bg-light py-3 px-2 px-md-4">
+          <div className="col-12 mx-auto bg-light py-3 px-3 px-md-5">
             <div className="row mx-auto align-items-start justify-content-start no-gutters">
               {
                 projects.map((project) => (
