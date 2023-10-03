@@ -1,7 +1,5 @@
 export function Table({ projects, show }) {
 
-  console.log(show)
-
   const showing = show ? 'd-block' : 'd-none'
 
   return (

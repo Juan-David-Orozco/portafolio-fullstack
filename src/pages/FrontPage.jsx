@@ -152,7 +152,7 @@ export function FrontPage() {
               </div>
 
               <div className="col-2 col-xl-1">
-                <div className="d-none d-sm-block p-1 text-right">
+                <div className="p-1 text-right">
                   <button 
                     id="view-table" type="button" 
                     className="btn btn-dark" data-toggle="button" 
@@ -172,10 +172,9 @@ export function FrontPage() {
                     </button>
                   </div>
                 </div> */}
-                <div className="dropdown text-right d-block d-sm-none ml-1">
+                {/* <div className="dropdown text-right d-block d-sm-none ml-1">
                   <div className="btn-group dropleft">
                     <button className="btn btn-dark rounded" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {/* <FontAwesomeIcon icon="fa-solid fa-list" /> */}
                       <FontAwesomeIcon icon="fa-solid fa-ellipsis-vertical" />
                     </button>
                     <div className="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
@@ -191,7 +190,7 @@ export function FrontPage() {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div> 
  
             </div>

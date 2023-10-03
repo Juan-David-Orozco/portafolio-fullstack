@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 
 export function Card({ projects, show }) {
 
-  console.log(show)
-
   const showing = show ? 'd-none' : 'd-block'
 
   return (
