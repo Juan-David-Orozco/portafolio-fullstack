@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 
-export function Card({ projects }) {
+export function Card({ projects, show }) {
+
+  console.log(show)
+
+  const showing = show ? 'd-none' : 'd-block'
+
   return (
     <>
       {
         projects.map((project) => (
-          <div className="col-12 col-sm-10 col-md-6 col-lg-4 p-2 mx-md-0 mx-auto" key={project.id}>
+          <div className={`col-12 col-sm-10 col-md-6 col-lg-4 p-2 mx-md-0 mx-auto ${showing}`} key={project.id}>
             <div className="card border border-dark">
               <div className="card-header bg-secondary d-flex justify-content-between">
                 <h6 className="my-auto" >{project.title}</h6>

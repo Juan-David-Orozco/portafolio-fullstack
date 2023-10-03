@@ -1,20 +1,25 @@
-export function Table({projects}) {
+export function Table({ projects, show }) {
+
+  console.log(show)
+
+  const showing = show ? 'd-block' : 'd-none'
+
   return (
-    <>
+    <div className={`Table-Container ${showing}`}>
       <div className="table-responsive">
-        <div className="table table-sm table-bordered">
+        <table className="table table-sm table-bordered">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Tilte</th>
-              <th>Framework</th>
-              <th>Website</th>
-              <th>Repositorio</th>
+              <th scope="col">ID</th>
+              <th scope="col">Tilte</th>
+              <th scope="col">Framework</th>
+              <th scope="col">Website</th>
+              <th scope="col">Repositorio</th>
             </tr>
           </thead>
           <tbody>
             {
-              projects.map(project => (
+              projects && projects.map(project => (
                 <tr key={project.id}>
                   <td>{project.id}</td>
                   <td>{project.title}</td>
@@ -25,8 +30,8 @@ export function Table({projects}) {
               ))
             }
           </tbody>
-        </div>
+        </table>
       </div>
-    </>
+    </div>
   )
 }

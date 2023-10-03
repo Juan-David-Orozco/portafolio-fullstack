@@ -14,7 +14,11 @@ export function FrontPage() {
 
   const [projects, setProjects] = useState([])
 
-  const [iconChangeView, setIconChangeWiew] = useState("fa-table-cells")
+  const [projectsView, setProjectsView] = useState([])
+
+  const [iconChangeView, setIconChangeWiew] = useState("fa-list")
+
+  const [changeView, setChangeView] = useState(true)
 
   const onGetProjects = () => {
     onSnapshot(collection(db, "frontend"), (querySnapshot) => {
@@ -24,59 +28,82 @@ export function FrontPage() {
       })
       console.log(docs)
       setProjects(docs)
+      setProjectsView(docs)
     });
   }
 
-  const filterProjects = async () => {
-    const querySearch = query(collection(db, "frontend"),
-      where("title", "==", search))
-    const querySnapshot = await getDocs(querySearch)
-    const docsFound = []
-    querySnapshot.forEach(doc => {
-      docsFound.push({id: doc.id, ...doc.data()})
-    })
-    console.log(docsFound)
-    return docsFound
+  // const filterProjects = async () => {
+  //   const querySearch = query(collection(db, "frontend"),
+  //     where("title", "==", search))
+  //   const querySnapshot = await getDocs(querySearch)
+  //   const docsFound = []
+  //   querySnapshot.forEach(doc => {
+  //     docsFound.push({id: doc.id, ...doc.data()})
+  //   })
+  //   console.log(docsFound)
+  //   return docsFound
+  // }
+
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+    onFilterProjects(e.target.value)
+    // if(e.target.value == !"") onFilterProjects(e.target.value)
+    // else onGetProjects()
   }
 
-  async function handleChange (e) {
-    const valueSearch = e.target.value
-    setSearch(valueSearch)
-    if(valueSearch == "") onGetProjects()
+  const onFilterProjects = (currentSearch) => {
+    var projectsFilter = projectsView.filter((project) => {
+      if(project.title !== "" && project.framework !== "") {
+        if(project.title.toString().toLowerCase().includes(currentSearch.toLowerCase())
+        || project.framework.toString().toLowerCase().includes(currentSearch.toLowerCase())
+        ){
+          return project;
+        }
+      }
+    });
+    //console.log(projectsFilter)
+    setProjects(projectsFilter)
   }
 
-  const cancelSearch = (e) => {
+  const toggleView = (e) => {
     e.preventDefault()
-    setSearch("")
-  }
-
-  const tooggleView = (e) => {
-    e.preventDefault()
-    console.log(e.target)
+    // console.log(e.target)
+    // console.log(e.target.id)
+    // console.log(e.target.childNodes)
+    // console.log(e.target.parentNode)
     //e.stopPropagation()
-    setIconChangeWiew("fa-list")
+    if(e.target.id === "view-table"){
+      setIconChangeWiew("fa-list")
+      document.getElementById("view-table").setAttribute("id", "view-card")
+      setChangeView(false)
+    } else if(e.target.id === "view-card") {
+      setIconChangeWiew("fa-table-cells")
+      document.getElementById("view-card").setAttribute("id", "view-table")
+      setChangeView(true)
+    }
+
   }
 
-  const handleClick = async (e) => {
-    e.preventDefault()
-    console.log(search)
-    //const expReg = /search/
-    const expReg = new RegExp(search)
-    console.log(expReg)
-    if(search === "") onGetProjects()
-    else {
-      // const titleProjects = projects.map((project) => project.title)
-      projects.forEach((project, index) => {
-        const validate = project.title.match(expReg)
-        console.log(validate)
-      })
-      // console.log(titleProjects)
-      const foundProjects = await filterProjects(expReg)
-      console.log(foundProjects)
-      //setProjects(foundProjects)
-      // setSearch("")
-    }
-  }
+  // const handleClick = async (e) => {
+  //   e.preventDefault()
+  //   console.log(search)
+  //   //const expReg = /search/
+  //   const expReg = new RegExp(search)
+  //   console.log(expReg)
+  //   if(search === "") onGetProjects()
+  //   else {
+  //     // const titleProjects = projects.map((project) => project.title)
+  //     projects.forEach((project, index) => {
+  //       const validate = project.title.match(expReg)
+  //       console.log(validate)
+  //     })
+  //     // console.log(titleProjects)
+  //     const foundProjects = await filterProjects(expReg)
+  //     console.log(foundProjects)
+  //     //setProjects(foundProjects)
+  //     // setSearch("")
+  //   }
+  // }
 
   useEffect(() => {
     onGetProjects()
@@ -107,7 +134,8 @@ export function FrontPage() {
           {/* Search Input - Toogle Button - Added Project */}
           <div className="col-12 mx-auto bg-light pt-4 pb-3 px-4 px-md-4">
             <div className="row align-items-center no-gutters px-0 px-md-4 py-2 justify-content-between">
-              <div className="col-10">
+
+              <div className="col-10 col-xl-11">
                 <div className="input-group">
                   <input
                     type="text" placeholder="Buscar proyecto"
@@ -115,26 +143,35 @@ export function FrontPage() {
                     value={search} onChange={handleChange}
                     id="input-search"
                   />
-                  <div className="input-group-append">                    
-                    <button className="btn btn-secondary" type="button" onClick={handleClick}>
-                      {/* <FontAwesomeIcon icon={faSearch } /> */}
-                      <FontAwesomeIcon icon="fa-solid fa-search" />
+                  {/* {search && <div className="input-group-append">
+                    <button className="btn btn-outline-primary" type="button" onClick={cancelSearch}  >
+                      <FontAwesomeIcon icon="fa-solid fa-xmark" />
                     </button>
-                  </div>
+                  </div>} */}
                 </div>
               </div>
-              <div className="col-2">
-                <div className="d-none d-sm-block p-1 text-right" data-toggle="buttons">
+
+              <div className="col-2 col-xl-1">
+                <div className="d-none d-sm-block p-1 text-right">
+                  <button 
+                    id="view-table" type="button" 
+                    className="btn btn-dark" data-toggle="button" 
+                    aria-pressed="false" autoComplete="off"
+                    onClick={toggleView}
+                  >
+                    <FontAwesomeIcon icon={`fa-solid ${iconChangeView}`} onClick={toggleView}/>
+                  </button>
+                </div>
+                {/* <div className="d-none d-sm-block p-1 text-right" data-toggle="buttons">
                   <div className="btn-group justify-content-end" role="group" aria-label="First group">
                     <button type="button" className="btn btn-dark" onClick={tooggleView} >
-                      <FontAwesomeIcon icon={`fa-solid fa-table-cells`} />
+                      <FontAwesomeIcon icon="fa-solid fa-table-cells" />
                     </button>
-                    <button type="button" className="btn btn-primary">
-                      <span className="d-none d-lg-inline text-sm" >Agregar</span>
-                      <FontAwesomeIcon icon="fa-solid fa-plus" className="my-auto" />
+                    <button type="button" className="btn btn-secondary">
+                      <FontAwesomeIcon icon="fa-solid fa-list" className="my-auto" />
                     </button>
                   </div>
-                </div>
+                </div> */}
                 <div className="dropdown text-right d-block d-sm-none ml-1">
                   <div className="btn-group dropleft">
                     <button className="btn btn-dark rounded" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,7 +192,6 @@ export function FrontPage() {
                     </div>
                   </div>
                 </div>
-
               </div> 
  
             </div>
@@ -163,8 +199,8 @@ export function FrontPage() {
           {/* Projects List => Differente views */}
           <div className="col-12 mx-auto bg-light py-3 px-3 px-md-5">
             <div className="row mx-auto align-items-start justify-content-start no-gutters">
-              {/* <Table projects={projects} /> */}
-              <Card projects={projects} />
+              <Table projects={projects} show={changeView} />
+              <Card projects={projects} show={changeView}/>
             </div>
           </div>
         </div>
