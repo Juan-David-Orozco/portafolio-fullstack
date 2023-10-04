@@ -81,6 +81,21 @@ span {
   }
 }
 
+@media (max-width: 576.98px) {
+  .fontsize-list{
+    font-size: 14px;
+  }
+}
+
+#img-backend{
+  width: 50%;
+}
+
+#img-notfound{
+  width: 80%;
+  height: 100%;
+}
+
 .frame{
   height: 30px;
   margin: auto 0;

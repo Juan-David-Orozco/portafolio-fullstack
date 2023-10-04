@@ -4,7 +4,6 @@ import { requestGetProjects } from "../services/requests";
 import { db } from '../services/firebase'
 import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faTableCells, faList, faPlus, faXmark, faSearch, faSquareXmark, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Table } from '../components/Table'
 import { Card } from '../components/Card'
 import { List } from '../components/List'
@@ -33,23 +32,9 @@ export function FrontPage() {
     });
   }
 
-  // const filterProjects = async () => {
-  //   const querySearch = query(collection(db, "frontend"),
-  //     where("title", "==", search))
-  //   const querySnapshot = await getDocs(querySearch)
-  //   const docsFound = []
-  //   querySnapshot.forEach(doc => {
-  //     docsFound.push({id: doc.id, ...doc.data()})
-  //   })
-  //   console.log(docsFound)
-  //   return docsFound
-  // }
-
   const handleChange = (e) => {
     setSearch(e.target.value)
     onFilterProjects(e.target.value)
-    // if(e.target.value == !"") onFilterProjects(e.target.value)
-    // else onGetProjects()
   }
 
   const onFilterProjects = (currentSearch) => {
@@ -70,41 +55,17 @@ export function FrontPage() {
     e.preventDefault()
     // console.log(e.target)
     // console.log(e.target.id)
-    // console.log(e.target.childNodes)
-    // console.log(e.target.parentNode)
-    //e.stopPropagation()
-    if(e.target.id === "view-table"){
-      setIconChangeWiew("fa-list")
-      document.getElementById("view-table").setAttribute("id", "view-card")
+    if(e.target.id === "view-list"){
+      setIconChangeWiew("fa-table-cells")
+      document.getElementById("view-list").setAttribute("id", "view-card")
       setChangeView(false)
     } else if(e.target.id === "view-card") {
-      setIconChangeWiew("fa-table-cells")
-      document.getElementById("view-card").setAttribute("id", "view-table")
+      setIconChangeWiew("fa-list")
+      document.getElementById("view-card").setAttribute("id", "view-list")
       setChangeView(true)
     }
 
   }
-
-  // const handleClick = async (e) => {
-  //   e.preventDefault()
-  //   console.log(search)
-  //   //const expReg = /search/
-  //   const expReg = new RegExp(search)
-  //   console.log(expReg)
-  //   if(search === "") onGetProjects()
-  //   else {
-  //     // const titleProjects = projects.map((project) => project.title)
-  //     projects.forEach((project, index) => {
-  //       const validate = project.title.match(expReg)
-  //       console.log(validate)
-  //     })
-  //     // console.log(titleProjects)
-  //     const foundProjects = await filterProjects(expReg)
-  //     console.log(foundProjects)
-  //     //setProjects(foundProjects)
-  //     // setSearch("")
-  //   }
-  // }
 
   useEffect(() => {
     onGetProjects()
@@ -155,43 +116,15 @@ export function FrontPage() {
               <div className="col-2 col-xl-1">
                 <div className="p-1 text-right">
                   <button 
-                    id="view-table" type="button" 
-                    className="btn btn-dark" data-toggle="button" 
+                    id="view-list" type="button" 
+                    className="btn btn-dark" data-toggle="tooltip"
+                    data-placement="left" title="Change view" 
                     aria-pressed="false" autoComplete="off"
                     onClick={toggleView}
                   >
                     <FontAwesomeIcon icon={`fa-solid ${iconChangeView}`}/>
                   </button>
                 </div>
-                {/* <div className="d-none d-sm-block p-1 text-right" data-toggle="buttons">
-                  <div className="btn-group justify-content-end" role="group" aria-label="First group">
-                    <button type="button" className="btn btn-dark" onClick={tooggleView} >
-                      <FontAwesomeIcon icon="fa-solid fa-table-cells" />
-                    </button>
-                    <button type="button" className="btn btn-secondary">
-                      <FontAwesomeIcon icon="fa-solid fa-list" className="my-auto" />
-                    </button>
-                  </div>
-                </div> */}
-                {/* <div className="dropdown text-right d-block d-sm-none ml-1">
-                  <div className="btn-group dropleft">
-                    <button className="btn btn-dark rounded" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <FontAwesomeIcon icon="fa-solid fa-ellipsis-vertical" />
-                    </button>
-                    <div className="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-                      <button type="button" className="btn btn-dark mr-1 dropdown-item">
-                        <div className="d-flex justify-content-between">
-                          <FontAwesomeIcon icon="fa-solid fa-table-cells" className="my-auto" /> <span>Vista </span>
-                        </div>
-                      </button>
-                      <button type="button" className="btn btn-primary dropdown-item">
-                        <div className="d-flex justify-content-between text-left">
-                          <FontAwesomeIcon icon="fa-solid fa-plus" className="my-auto" /><span>Agregar</span>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </div> */}
               </div> 
  
             </div>

@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 
 export function List({ projects, show }) {
-  const showing = show ? 'd-block' : 'd-none'
+  const showing = show ? 'd-none' : 'd-block'
   return (
     <div className={`container-fluid ${showing}`}>
-      <div className="row lead border rounded bg-primary text-white text-center text-sm py-1 px-2 no-gutters">
+      <div className="row lead border rounded bg-primary text-white text-center font-weight-normal text-sm py-1 px-2 no-gutters border border-dark fontsize-list">
         <div className="col-3 col-sm-2">Framework</div>
         <div className="col-4 col-sm-6">Title</div>
         <div className="col-5 col-sm-4">Links</div>
       </div>
       {
         projects && projects.map(project => (
-          <div className="row my-1 p-1 rounded bg-dark text-white no-gutters text-center" key={project.id}>
+          <div className="row my-1 p-1 rounded bg-dark text-white no-gutters text-center fontsize-list" key={project.id}>
             <div className="col-3 col-sm-2 my-auto">
               <img src={project.frame} className="frame" />
             </div>

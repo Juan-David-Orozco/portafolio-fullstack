@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Card({ projects, show }) {
 
-  const showing = show ? 'd-none' : 'd-block'
+  const showing = show ? 'd-block' : 'd-none'
 
   return (
     <>
