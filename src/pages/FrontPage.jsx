@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faTableCells, faList, faPlus, faXmark, faSearch, faSquareXmark, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Table } from '../components/Table'
 import { Card } from '../components/Card'
+import { List } from '../components/List'
 
 export function FrontPage() {
 
@@ -159,7 +160,7 @@ export function FrontPage() {
                     aria-pressed="false" autoComplete="off"
                     onClick={toggleView}
                   >
-                    <FontAwesomeIcon icon={`fa-solid ${iconChangeView}`} onClick={toggleView}/>
+                    <FontAwesomeIcon icon={`fa-solid ${iconChangeView}`}/>
                   </button>
                 </div>
                 {/* <div className="d-none d-sm-block p-1 text-right" data-toggle="buttons">
@@ -198,8 +199,9 @@ export function FrontPage() {
           {/* Projects List => Differente views */}
           <div className="col-12 mx-auto bg-light py-3 px-3 px-md-5">
             <div className="row mx-auto align-items-start justify-content-start no-gutters">
-              <Table projects={projects} show={changeView} />
+              {/* <Table projects={projects} show={changeView} /> */}
               <Card projects={projects} show={changeView}/>
+              <List projects={projects} show={changeView}/>
             </div>
           </div>
         </div>
